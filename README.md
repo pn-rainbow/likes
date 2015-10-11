@@ -22,7 +22,22 @@ vagrant plugin install vagrant-cachier
 
 ### Windows specific
 
-In progress...
+Для использования Linux-инструментов под Windows необходимо поставить [https://www.cygwin.com/](Cygwin).
+При установке стоит указать следующие пакеты:
+```
+python python-paramiko python-crypto gcc-g++ wget openssh python-setuptools
+```
+
+Теперь можно работать в `Cygwin64 Terminal`.
+Возможно при установке какого-нибудь из пакетов он попросит поставить Microsoft Visual C++ Runtime:
+
+http://aka.ms/vcpython27
+
+
+Есть другой вариант -- поставить [http://babun.github.io/](Babun). Это хорошая сборка Cygwin с менеджером пакетов `pact`.
+
+
+
 
 
 
