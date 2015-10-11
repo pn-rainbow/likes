@@ -1,0 +1,27 @@
+# -*- mode: ruby -*-
+# generic Vagrantfile for local development
+# required plugins:
+#   vagrant-cachier
+
+Vagrant.configure(2) do |config|
+    # In Ubuntu 14 we trust
+    default_box = "ubuntu/trusty64"
+
+    # Nice to have plugin: vagrant-cachier
+    # https://github.com/fgrehm/vagrant-cachier
+    if Vagrant.has_plugin?("vagrant-cachier")
+        config.cache.scope = :box
+    end
+    config.vm.define :dev do |node|
+        node.vm.box = default_box
+        node.vm.hostname = "cmit.local"
+        config.vm.network :forwarded_port, guest: 22, host: 9590, id: "ssh"
+        node.vm.network :private_network, :ip => "192.168.13.36"
+
+        node.vm.provider :virtualbox do |vb|
+            vb.memory = 2048
+            vb.cpus = 2
+        end
+    end
+end
+
