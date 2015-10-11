@@ -1,12 +1,18 @@
-# CMIT Engineerim работа с виртуальными машинам и удаленными серверами.
+# CMIT Engineerim 
+
+## Разработка с виртуальной машиной
 
 
 ### Linux Specific:
 
 На компе необходимы Virtualbox, Vagrant, Ansible
 
-https://www.virtualbox.org/
-https://www.vagrantup.com/
+[https://www.virtualbox.org/](Virtualbox)
+
+[https://www.vagrantup.com/](Vagrant)
+
+[http://docs.ansible.com/ansible/intro_installation.html](Ansible)
+_Можно через пакетный менеджер `apt-get`, `brew` и `pip`_
 
 После установки вагранта, желательно поставить плагин `vagrant-cachier`,
 в консоли в произвольной папке запустить следующую комманду
