@@ -1,9 +1,9 @@
 ---
  - name: synchronize code
-   synchronize: src=../justweb dest=/home/vagrant/
+   synchronize: src=../helloworld dest=/home/vagrant/
 
  - name: install python packages
-   pip: requirements=/home/vagrant/justweb/requirements.txt
+   pip: requirements=/home/vagrant/helloworld/requirements.txt
 
 
 # - name: make sure, /var/www exists
