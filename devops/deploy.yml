@@ -10,4 +10,4 @@
     - nginx
     - mongodb
     - supervisord
-    - site
+    - {role: site, tags: ['code']}
