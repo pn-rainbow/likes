@@ -2,7 +2,7 @@
 
 ## Кратко о python
 Есть хороший ресурс с простыми короткими квестами на английском языке:
-[https://www.dataquest.io](DataQuest), первый трек -- **Python Programming**.
+https://www.dataquest.io, первый трек -- **Python Programming**.
 
 
 
@@ -14,11 +14,11 @@
 
 На компе необходимы Virtualbox, Vagrant, Ansible
 
-[https://www.virtualbox.org/](Virtualbox)
+https://www.virtualbox.org/
 
-[https://www.vagrantup.com/](Vagrant)
+https://www.vagrantup.com/
 
-[http://docs.ansible.com/ansible/intro_installation.html](Ansible)
+http://docs.ansible.com/ansible/intro_installation.html
 _Можно через пакетный менеджер `apt-get`, `brew` и `pip`_
 
 После установки вагранта, желательно поставить плагин `vagrant-cachier`,
@@ -41,7 +41,7 @@ python python-paramiko python-crypto gcc-g++ wget openssh python-setuptools
 http://aka.ms/vcpython27
 
 
-Есть другой вариант -- поставить [http://babun.github.io/](Babun). Это хорошая сборка Cygwin с менеджером пакетов `pact`.
+Есть другой вариант -- поставить http://babun.github.io/. Это хорошая сборка Cygwin с менеджером пакетов `pact`.
 
 
 
