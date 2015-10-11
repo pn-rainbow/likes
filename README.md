@@ -83,6 +83,15 @@ ansible-playbook -i inventory deploy.yml
 
 
 
+
+## Workflow
+
+Пишем код, заливаем его на виртуальную машину и проверяем работоспособность
+```
+ansible-playbook -i inventory deploy.yml --tags "code"
+```
+
+
 ### TODO
 
 1. Nginx devops
