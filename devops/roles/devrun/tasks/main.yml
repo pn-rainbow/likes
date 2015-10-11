@@ -1,0 +1,38 @@
+---
+ - name: sync the frontend code
+   synchronize: src=../frontend/ dest={{ frontend_path }}
+
+ - name: debug frontend | venv
+   pip: requirements={{ frontend_path }}/requirements.txt virtualenv={{ frontend_debug_venv }}
+
+ - name: place dev-frontend config for supervisor
+   template: src={{ item }} dest=/etc/supervisor/conf.d/{{ item }}
+   with_items:
+    - frontend.conf
+
+ - name: sync the backend code
+   synchronize: src=../backend/ dest={{ backend_path }}
+
+ - name: backend | venv
+   pip: requirements={{ item }}/requirements.txt virtualenv={{ venv }}
+   with_items:
+    - "{{ backend_path }}"
+# - name: create virtualenv -- flaskbox
+#   pip: requirements=/home/vagrant/frontend/requirements.txt virtualenv=/home/vagrant/frontend/flaskbox
+
+
+ - name: reset permission for ~
+   file: dest={{ home_path }} state=directory recurse=yes owner=vagrant group=sudo mode=0755
+
+   # flask or eve will restarted automaticaly
+# - supervisorctl: name=frontend state=started
+ # celery should be restarted
+# - supervisorctl: name=backend state=restarted
+
+ - name: let's run dev tests
+   command: chdir={{ item }}
+            su - vagrant -c "venv/bin/python -m unittest discover"
+   with_items:
+    - "{{ frontend_path }}"
+    - "{{ backend_path }}"
+

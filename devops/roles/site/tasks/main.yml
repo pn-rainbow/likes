@@ -1,0 +1,37 @@
+---
+ - name: make sure, /var/www exists
+   file: dest=/var/www state=directory
+
+ - name: syncronize code
+   synchronize: src=../frontend/ dest={{ site_path }} rsync_path="sudo rsync"
+
+ - name: create virtualenv -- flaskbox
+   pip: requirements={{ site_path }}/requirements.txt virtualenv={{ site_venv }}
+
+ - name: install uwsgi
+   pip: name=uwsgi virtualenv={{ site_venv }}
+
+ - name: setup uwsgi under supervisor
+   template: src=uwsgi.conf dest=/etc/supervisor/conf.d/uwsgi.conf
+
+ - name: uwsgi site config
+   template: src=uwsgi.ini dest={{ site_path }}/uwsgi.ini
+
+ - name: reset permissions
+   file: dest=/var/www state=directory recurse=yes owner=www-data group=www-data mode=0755
+
+ - name: reset permissions for log dir
+   file: dest=/var/log/uwsgi state=directory recurse=yes owner=www-data group=www-data mode=0755
+
+ - name: restart nginx
+   service: name={{ item }} state=restarted
+   with_items:
+    - nginx
+
+
+
+
+
+#- name: Copy nginx default.conf
+#  template: src=default.conf dest=/etc/nginx/conf.d/default.conf
+#  notify: restart nginx

@@ -1,0 +1,12 @@
+---
+- name: Update, setup locale, install nginx, setup python-tools, ...
+  hosts: all
+  user: vagrant
+  sudo: yes
+  vars:
+    user: vagrant
+  roles:
+    - common
+    - nginx
+    - mongodb
+    - supervisord
